@@ -1,4 +1,5 @@
 import {AppsterCallback, AppsterGUIId, AppsterHTML} from './AppsterConstants.js'
+import Appster from './Appster.js';
 
 export default class AppsterController {
     constructor() {
@@ -90,9 +91,17 @@ export default class AppsterController {
         console.log("processCreateNewWork");
 
         // PROMPT FOR THE NAME OF THE NEW LIST
-        
+        document.getElementById("appster_text_input_modal").style.visibility = 'visible';
+        document.getElementById("appster_text_input_modal").style.opacity = 1;
+        document.getElementById("appster_text_input_modal_frame").style.opacity = 1;
+        document.getElementById("appster_text_input_modal_enter_button").addEventListener("click", function(){
+            var input = document.getElementById("appster_text_input_modal_textfield").value;
+            console.log(input);
+        });
+        if(input.length )
         // MAKE A BRAND NEW LIST
         this.model.goList();
+        
     }
 
     /**
