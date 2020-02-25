@@ -241,6 +241,8 @@ export default class AppsterView {
         section.appendChild(noButton);
         yesNoFrame.appendChild(footer);
         yesNoModal.appendChild(yesNoFrame);
+        
+        
         return yesNoModal;
     }
 
@@ -512,7 +514,8 @@ export default class AppsterView {
     * This method is for hiding the yes/no dialog.
     */
    hideDialog() {
-       let dialog = document.getElementById(AppsterGUIId.MODAL_YES_NO_DIALOG);
+       console.log("hideDialog()");
+       let dialog = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL);
        dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
    }
 
@@ -520,7 +523,14 @@ export default class AppsterView {
     * This method is for showing the yes/no dialog.
     */
    showDialog() {
-       let dialog = document.getElementById(AppsterGUIId.MODAL_YES_NO_DIALOG);
+       let dialog = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL);
        dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
+       //Are you sure you want to delete this logo?
+
+       console.log(AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON)
+        let nobutton = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON)
+        nobutton.addEventListener("click", function(){
+            dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
+          });
    }
 }

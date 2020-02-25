@@ -20,6 +20,10 @@ export default class AppsterModel {
         this.view = initView;
     }
 
+    goList(newWork) {
+        this.appendWork(newWork);
+    }
+
     goHome() {
         this.view.goToHomeScreen();
     }

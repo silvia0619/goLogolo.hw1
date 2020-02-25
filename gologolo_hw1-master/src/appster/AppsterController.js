@@ -1,5 +1,6 @@
-import {AppsterCallback, AppsterGUIId, AppsterHTML} from './AppsterConstants.js'
+import {AppsterCallback, AppsterGUIId, AppsterHTML, AppsterGUIClass} from './AppsterConstants.js'
 import Appster from './Appster.js';
+import GoLogoLoLogo from '../gologolo/GoLogoLoLogo.js';
 
 export default class AppsterController {
     constructor() {
@@ -8,6 +9,11 @@ export default class AppsterController {
 
     setModel(initModel) {
         this.model = initModel;
+        var theModel = this.model;
+    }
+
+    getModel(){
+        return this.model;
     }
 
     /**
@@ -39,6 +45,10 @@ export default class AppsterController {
         // AND THE MODAL BUTTONS
         this.registerEventHandler(AppsterGUIId.DIALOG_YES_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]);
         this.registerEventHandler(AppsterGUIId.DIALOG_NO_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]);
+
+        this.registerEventHandler(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_ENTER_BUTTON]);
+        this.registerEventHandler(AppsterGUIId.APPSTER_CONFIRM_MODAL_OK_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_OK_BUTTON]);
+        this.registerEventHandler(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_CANCEL_BUTTON,AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CANCEL_BUTTON]);
     }
 
     /**
@@ -83,24 +93,74 @@ export default class AppsterController {
         this.model.goEdit(workToEdit);
     }
 
+    processEnterButton = () => {
+        var theModel = this.model;
+        var result = false;
+        console.log(this.model, "repeat starts here############");
+        var input = document.getElementById("appster_text_input_modal_textfield").value;
+        if(input.length <= 0){}
+        else{
+            var i;
+            console.log("!!!!!!!!!!!theModel.recentWork.length", theModel.recentWork.length)
+            for(i = 0; i < theModel.recentWork.length; i++){
+                if(input == theModel.recentWork[i].name)
+                    result = true;
+            }
+            console.log("!!!!!!!!!!!!!!!result", result)
+            if(result == true){
+                console.log("invalid");
+                document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
+                document.getElementById("appster_text_input_modal").style.opacity = 0;
+                document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+    
+                document.getElementById("appster_confirm_modal").style.opacity = 1;
+                document.getElementById("appster_confirm_modal").style.visibility = 'visible';
+                document.getElementById("appster_confirm_modal_frame").style.opacity = 1;
+            }
+            else{
+                var newLogo = new GoLogoLoLogo(input);
+                theModel.goList(newLogo);
+                    
+                document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
+                document.getElementById("appster_text_input_modal").style.opacity = 0;
+                document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+            }
+
+        }
+        
+    }
+
+    processOkButton(){
+        document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
+        document.getElementById("appster_text_input_modal").style.opacity = 0;
+        document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+        document.getElementById("appster_confirm_modal").style.opacity = 0;
+        document.getElementById("appster_confirm_modal").style.visibility = 'hidden';
+        document.getElementById("appster_confirm_modal_frame").style.opacity = 0;
+    }
+
+    processCancelButton(){
+        document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
+        document.getElementById("appster_text_input_modal").style.opacity = 0;
+        document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+    }
+
     /**
      * This function is called when the user requests to create
      * new work.
      */
-    processCreateNewWork() {
+    processCreateNewWork = () => {
+        console.log(this);
         console.log("processCreateNewWork");
 
         // PROMPT FOR THE NAME OF THE NEW LIST
         document.getElementById("appster_text_input_modal").style.visibility = 'visible';
         document.getElementById("appster_text_input_modal").style.opacity = 1;
         document.getElementById("appster_text_input_modal_frame").style.opacity = 1;
-        document.getElementById("appster_text_input_modal_enter_button").addEventListener("click", function(){
-            var input = document.getElementById("appster_text_input_modal_textfield").value;
-            console.log(input);
-        });
-        if(input.length )
+
+
         // MAKE A BRAND NEW LIST
-        this.model.goList();
+        //this.model.goList();
         
     }
 
@@ -162,8 +222,9 @@ export default class AppsterController {
      * button, i.e. the delete button, in order to delete the
      * list being edited.
      */
-    processDeleteWork() {
+    processDeleteWork = () => {
         // VERIFY VIA A DIALOG BOX
-        window.todo.model.view.showDialog();
+        this.model.view.showDialog();
+
     }
 }
