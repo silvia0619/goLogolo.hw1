@@ -48,6 +48,6 @@ export default class GoLogoLoModel extends AppsterModel {
 
     updateText() {
         
-        this.view.appendLetter(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD, 'a');
+        //this.view.appendLetter(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD, 'a');
     }
 }

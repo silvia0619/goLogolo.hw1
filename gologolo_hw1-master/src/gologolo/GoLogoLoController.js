@@ -14,7 +14,10 @@ export default class GoLogoLoController
         this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_TEXT_COLOR_PICKER]);
         this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_BACKGROUND_COLOR_PICKER]);
         this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_BORDER_COLOR_PICKER]);
-
+        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_BORDER_RADIUS_SLIDER]);
+        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_BORDER_THICKNESS_SLIDER]);
+        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_PADDING_SLIDER]);
+        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER, AppsterHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_MARGIN_SLIDER]);
     }
 
     processEditText = () => {
@@ -28,7 +31,7 @@ export default class GoLogoLoController
 
     processEditSize = () => {
         this.model.workToEdit.setFontSize(document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER).value + "px");
-        this.model.view.loadWork(this.model.workToEdit);
+        document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).style.fontSize = this.model.workToEdit.getFontSize();
     }
 
     processTextColorPicker = () => {
@@ -44,6 +47,27 @@ export default class GoLogoLoController
     processBorderColorPicker = () => {
         this.model.workToEdit.setBorderColor(document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER).value);
         this.model.view.loadWork(this.model.workToEdit);
+    } 
+
+    processBorderRadiusSlider = () => {
+        this.model.workToEdit.setBorderRadius(document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER).value + "px");
+        document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).style.borderRadius = this.model.workToEdit.getBorderRadius();
+    } 
+
+    processBorderThicknessSlider = () => {
+        this.model.workToEdit.setBorderThickness(document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER).value + "px");
+        
+        document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).style.borderWidth = this.model.workToEdit.getBorderThickness();
+    } 
+
+    processPaddingSlider = () => {
+        this.model.workToEdit.setPadding(document.getElementById(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER).value + "px");
+        document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).style.padding = this.model.workToEdit.getPadding();
+    } 
+
+    processMarginSlider = () => {
+        this.model.workToEdit.setMargin(document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER).value + "px");
+        document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).style.margin = this.model.workToEdit.getMargin();
     } 
 
 }

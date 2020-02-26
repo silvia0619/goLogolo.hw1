@@ -36,7 +36,11 @@ export const GoLogoLoCallback = {
     GOLOGOLO_PROCESS_EDIT_SIZE: "processEditSize",
     GOLOGOLO_PROCESS_TEXT_COLOR_PICKER: "processTextColorPicker",
     GOLOGOLO_PROCESS_BACKGROUND_COLOR_PICKER: "processBackgroundColorPicker",
-    GOLOGOLO_PROCESS_BORDER_COLOR_PICKER: "processBorderColorPicker"
+    GOLOGOLO_PROCESS_BORDER_COLOR_PICKER: "processBorderColorPicker",
+    GOLOGOLO_PROCESS_BORDER_RADIUS_SLIDER: "processBorderRadiusSlider",
+    GOLOGOLO_PROCESS_BORDER_THICKNESS_SLIDER: "processBorderThicknessSlider",
+    GOLOGOLO_PROCESS_PADDING_SLIDER: "processPaddingSlider",
+    GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider"
     
 };
 
