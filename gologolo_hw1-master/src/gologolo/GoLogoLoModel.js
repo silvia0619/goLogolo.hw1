@@ -1,5 +1,7 @@
 import AppsterModel from '../appster/AppsterModel.js'
+import {AppsterGUIId} from '../appster/AppsterConstants.js'
 import GoLogoLoLogo from './GoLogoLoLogo.js'
+import { GoLogoLoText, GoLogoLoGUIId } from './GoLogoLoConstants.js';
 
 export default class GoLogoLoModel extends AppsterModel {
     constructor() {
@@ -45,6 +47,6 @@ export default class GoLogoLoModel extends AppsterModel {
     }
 
     updateText() {
- //       this.view.
+        this.view.appendLetter(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD, 'a');
     }
 }

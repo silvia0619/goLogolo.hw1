@@ -12,10 +12,6 @@ export default class AppsterController {
         var theModel = this.model;
     }
 
-    getModel(){
-        return this.model;
-    }
-
     /**
      * This function helps the constructor setup the event handlers for all controls.
      * 
@@ -43,8 +39,8 @@ export default class AppsterController {
         this.registerEventHandler(AppsterGUIId.APPSTER_EDIT_TRASH, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_DELETE_WORK]);
 
         // AND THE MODAL BUTTONS
-        this.registerEventHandler(AppsterGUIId.DIALOG_YES_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]);
-        this.registerEventHandler(AppsterGUIId.DIALOG_NO_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]);
+        this.registerEventHandler(AppsterGUIId.APPSTER_YES_NO_MODAL_YES_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]);
+        this.registerEventHandler(AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CANCEL_DELETE_WORK]);
 
         this.registerEventHandler(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_ENTER_BUTTON]);
         this.registerEventHandler(AppsterGUIId.APPSTER_CONFIRM_MODAL_OK_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_OK_BUTTON]);
@@ -172,8 +168,6 @@ export default class AppsterController {
      * the controls on the edit screen.
      */
     processEditWork = (event) => {
-        console.log("processEditWork");
-
         // GET THE WORK THAT THE USER WANTS TO LOAD
         let clickedElement = event.target;
         let workName = clickedElement.workId;
@@ -181,6 +175,7 @@ export default class AppsterController {
 
         // START EDITING THE SELECTED WORK
         this.model.editWork(workName);
+        return clickedElement;
     }
 
     /**
@@ -188,8 +183,9 @@ export default class AppsterController {
      * button in the popup dialog after having requested to delete
      * the loaded work.
      */
-    processCancelDeleteWork() {
+    processCancelDeleteWork = () => {
         // JUST HIDE THE DIALOG
+        this.model.view.hideDialog();
 
     }
 
@@ -209,9 +205,12 @@ export default class AppsterController {
      * button in the popup dialog after having requested to delete
      * the loaded work.
      */
-    processConfirmDeleteWork() {
+    processConfirmDeleteWork = () => {
         // DELETE THE WORK
-        this.model.removeWork(this.model.getWorkToEdit());
+        console.log("1st", this.model)
+        this.model.recentWork.filter(this.processEditWork());
+        //this.model.removeWork(this.model.getWorkToEdit());
+
 
         // GO BACK TO THE HOME SCREEN
         this.model.goHome();

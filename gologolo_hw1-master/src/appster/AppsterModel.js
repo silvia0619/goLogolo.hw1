@@ -29,6 +29,7 @@ export default class AppsterModel {
     }
 
     editWork(workNameToEdit) {
+        console.log("editWork(workNameToEdit)");
         // GET THE WORK THAT WE PLAN TO EDIT
         let work = this.getRecentWork(workNameToEdit);
 

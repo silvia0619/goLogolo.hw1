@@ -24,6 +24,7 @@ export default class Appster {
         // THE CONTROLLER NEEDS TO BE ABLE TO CALL SERVICE
         // METHODS IN THE MODEL TO CHANGE DATA
         this.controller.setModel(this.model);
+        
     }
 
     /**
@@ -50,6 +51,9 @@ export default class Appster {
 
         // AND SETUP THE APPSTER EVENT HANDLERS
         this.controller.registerAppsterEventHandlers();
+
+        this.controller.registerGoLogoLoEventHandlers();
+
     }
 
     loadJsonFile(testFilePath, callback) {

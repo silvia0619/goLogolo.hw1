@@ -525,12 +525,6 @@ export default class AppsterView {
    showDialog() {
        let dialog = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL);
        dialog.classList.add(AppsterGUIClass.IS_VISIBLE);
-       //Are you sure you want to delete this logo?
-
        console.log(AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON)
-        let nobutton = document.getElementById(AppsterGUIId.APPSTER_YES_NO_MODAL_NO_BUTTON)
-        nobutton.addEventListener("click", function(){
-            dialog.classList.remove(AppsterGUIClass.IS_VISIBLE);
-          });
    }
 }

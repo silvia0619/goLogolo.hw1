@@ -29,6 +29,13 @@ export const GoLogoLoGUIId = {
     GOLOGOLO_TEXT: "gologolo_text"
 };
 
+export const GoLogoLoCallback = {
+    // SOME CALLBACKS ARE SETUP AT THE START BECAUSE THE 
+    // CONTROLS ARE DECLARED INSIDE index.html
+    GOLOGOLO_PROCESS_EDIT_TEXT: "processEditText"
+    
+};
+
 export const GoLogoLoText = {
     GOLOGOLO_EDIT_TEXT_TEXT: "gologolo_edit_text_text",
     GOLOGOLO_FONT_SIZE_TEXT: "gologolo_font_size_text",
