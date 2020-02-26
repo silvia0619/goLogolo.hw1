@@ -32,7 +32,11 @@ export const GoLogoLoGUIId = {
 export const GoLogoLoCallback = {
     // SOME CALLBACKS ARE SETUP AT THE START BECAUSE THE 
     // CONTROLS ARE DECLARED INSIDE index.html
-    GOLOGOLO_PROCESS_EDIT_TEXT: "processEditText"
+    GOLOGOLO_PROCESS_EDIT_TEXT: "processEditText",
+    GOLOGOLO_PROCESS_EDIT_SIZE: "processEditSize",
+    GOLOGOLO_PROCESS_TEXT_COLOR_PICKER: "processTextColorPicker",
+    GOLOGOLO_PROCESS_BACKGROUND_COLOR_PICKER: "processBackgroundColorPicker",
+    GOLOGOLO_PROCESS_BORDER_COLOR_PICKER: "processBorderColorPicker"
     
 };
 

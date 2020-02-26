@@ -31,13 +31,6 @@ export const AppsterCallback = {
     APPSTER_PROCESS_CANCEL_BUTTON: "processCancelButton"
 };
 
-export const GoLogoLoCallback = {
-    // SOME CALLBACKS ARE SETUP AT THE START BECAUSE THE 
-    // CONTROLS ARE DECLARED INSIDE index.html
-    GOLOGOLO_PROCESS_EDIT_TEXT: "processEditText"
-    
-};
-
 /**
  * AppsterGUIClass - these are the html style classes we'll use for
  * our GUI controls. We'll need these so our style sheets can consistently

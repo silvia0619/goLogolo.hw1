@@ -207,14 +207,17 @@ export default class AppsterController {
      */
     processConfirmDeleteWork = () => {
         // DELETE THE WORK
-        console.log("1st", this.model)
-        this.model.recentWork.filter(this.processEditWork());
-        //this.model.removeWork(this.model.getWorkToEdit());
-
+        console.log("1st", this.model.workToEdit);
+        console.log("2nd", this.model.recentWork);
+        this.model.removeWork(this.model.workToEdit);
+        
 
         // GO BACK TO THE HOME SCREEN
         this.model.goHome();
+        this.processCancelDeleteWork();
+
     }
+
 
     /**
      * This function responds to when the user clicks the trash

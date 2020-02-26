@@ -18,6 +18,4 @@ let controller = new GoLogoLoController();
 let app = new GoLogoLoApp(model, view, controller);
 app.launch("./src/gologolo/GoLogoLoData.json");
 
-//controller.registerGoLogoLoEventHandlers();
-
 
