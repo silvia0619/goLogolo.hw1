@@ -26,7 +26,30 @@ export const GoLogoLoGUIId = {
     GOLOGOLO_BORDER_THICKNESS_SLIDER: "gologolo_border_thickness_slider",
     GOLOGOLO_PADDING_SLIDER: "gologolo_padding_slider",
     GOLOGOLO_MARGIN_SLIDER: "gologolo_margin_slider",
-    GOLOGOLO_TEXT: "gologolo_text"
+    GOLOGOLO_TEXT: "gologolo_text",
+
+    // IDs FOR MODALS
+    GOLOGOLO_YES_NO_MODAL: 'gologolo_yes_no_modal',
+    GOLOGOLO_YES_NO_MODAL_FRAME: 'gologolo_yes_no_modal_frame',
+    GOLOGOLO_YES_NO_MODAL_HEADER: 'gologolo_yes_no_modal_header',
+    GOLOGOLO_YES_NO_MODAL_SECTION: 'gologolo_yes_no_modal_section',
+    GOLOGOLO_YES_NO_MODAL_YES_BUTTON: 'gologolo_yes_no_modal_yes_button',
+    GOLOGOLO_YES_NO_MODAL_NO_BUTTON: 'gologolo_yes_no_modal_no_button',
+    GOLOGOLO_YES_NO_MODAL_FOOTER: 'gologolo_yes_no_modal_footer',
+    GOLOGOLO_CONFIRM_MODAL: 'gologolo_confirm_modal',
+    GOLOGOLO_CONFIRM_MODAL_FRAME: 'gologolo_confirm_modal_frame',
+    GOLOGOLO_CONFIRM_MODAL_HEADER: 'gologolo_confirm_modal_header',
+    GOLOGOLO_CONFIRM_MODAL_SECTION: 'gologolo_confirm_modal_section',
+    GOLOGOLO_CONFIRM_MODAL_OK_BUTTON: 'gologolo_confirm_modal_ok_button',
+    GOLOGOLO_CONFIRM_MODAL_FOOTER: 'gologolo_confirm_frame',
+    GOLOGOLO_TEXT_INPUT_MODAL: 'gologolo_text_input_modal',
+    GOLOGOLO_TEXT_INPUT_MODAL_FRAME: 'gologolo_text_input_modal_frame',
+    GOLOGOLO_TEXT_INPUT_MODAL_HEADER: 'gologolo_text_input_modal_header',
+    GOLOGOLO_TEXT_INPUT_MODAL_SECTION: 'gologolo_text_input_modal_section',
+    GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD: "gologolo_text_input_modal_textfield",
+    GOLOGOLO_TEXT_INPUT_MODAL_ENTER_BUTTON: 'gologolo_text_input_modal_enter_button',
+    GOLOGOLO_TEXT_INPUT_MODAL_CANCEL_BUTTON: 'gologolo_text_input_modal_cancel_button',
+    GOLOGOLO_TEXT_INPUT_MODAL_FOOTER: 'gologolo_text_input_modal_footer'
 };
 
 export const GoLogoLoCallback = {
@@ -40,7 +63,9 @@ export const GoLogoLoCallback = {
     GOLOGOLO_PROCESS_BORDER_RADIUS_SLIDER: "processBorderRadiusSlider",
     GOLOGOLO_PROCESS_BORDER_THICKNESS_SLIDER: "processBorderThicknessSlider",
     GOLOGOLO_PROCESS_PADDING_SLIDER: "processPaddingSlider",
-    GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider"
+    GOLOGOLO_PROCESS_MARGIN_SLIDER: "processMarginSlider",
+    GOLOGOLO_PROCESS_CANCEL_BUTTON: "processCancelButtonLogo",
+    GOLOGOLO_PROCESS_ENTER_BUTTON: "processEnterButtonLogo"
     
 };
 

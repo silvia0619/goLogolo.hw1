@@ -1,5 +1,5 @@
 import {GoLogoLoGUIClass, GoLogoLoGUIId, GoLogoLoText} from './GoLogoLoConstants.js'
-import {AppsterHTML, AppsterSymbols} from '../appster/AppsterConstants.js'
+import {AppsterHTML, AppsterGUIId, AppsterGUIClass, AppsterText} from '../appster/AppsterConstants.js'
 import AppsterView from '../appster/AppsterView.js'
 
 export default class GoLogoLoView extends AppsterView {
@@ -26,6 +26,8 @@ export default class GoLogoLoView extends AppsterView {
         let marginSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER, [], rangeAttributes);
         let textDiv = this.buildElement(AppsterHTML.DIV, GoLogoLoGUIId.GOLOGOLO_TEXT);
         let promptClass = [GoLogoLoGUIClass.GOLOGOLO_CONTROL_PROMPT];
+        let goLogoLoTextInputModal = this.buildGoLogoLoTextInputModal();
+
         toolbar.appendChild(editTextButton);
         toolbar.appendChild(this.buildElement(AppsterHTML.BR));
         toolbar.appendChild(this.buildElement(AppsterHTML.SPAN, "", promptClass, [], GoLogoLoText.GOLOGOLO_FONT_SIZE_TEXT));
@@ -51,9 +53,11 @@ export default class GoLogoLoView extends AppsterView {
         toolbar.appendChild(this.buildElement(AppsterHTML.BR));
         toolbar.appendChild(this.buildElement(AppsterHTML.SPAN, "", promptClass, [], GoLogoLoText.GOLOGOLO_MARGIN_TEXT));
         toolbar.appendChild(marginSlider);
+        toolbar.appendChild(goLogoLoTextInputModal);
 
         workspace.appendChild(toolbar);
         workspace.appendChild(textDiv);
+        //this.showElementWithId(AppsterGUIId.APPSTER_EDIT_SCREEN, false);  
         return workspace;
     }
     
@@ -63,6 +67,7 @@ export default class GoLogoLoView extends AppsterView {
         textDiv.innerHTML = work.getText();
         let fontSizeSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
         fontSizeSlider.value = work.getFontSize();
+        fontSizeSlider.min = 1;
         let textColorPicker = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER);
         textColorPicker.value = work.getTextColor();
         let backgroundColorPicker = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER);
@@ -77,6 +82,7 @@ export default class GoLogoLoView extends AppsterView {
         paddingSlider.value = work.getPadding();
         let marginSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
         marginSlider.value = work.getMargin();
+
         this.loadWorkStyle(work);
     }
 
@@ -103,7 +109,7 @@ export default class GoLogoLoView extends AppsterView {
     appendLetter(listItemId, letterToAppend) {
         console.log(listItemId)
         let textList = document.getElementById(listItemId);
-        console.log(textList, "textLLLLLLLLLLLLLLLList")
+        //console.log(textList, "textLLLLLLLLLLLLLLLList")
         textList.innerHTML += textList.innerHTML + letterToAppend;
     }
     loadGoLogoLoTextInputModal(appData){
@@ -112,19 +118,19 @@ export default class GoLogoLoView extends AppsterView {
 
     buildGoLogoLoTextInputModal() {
         let textModal = this.buildElement(  AppsterHTML.DIV, 
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL,
                                             [AppsterGUIClass.APPSTER_MODAL],
                                             [],
                                             null,
                                             AppsterGUIClass.MODAL_ANIMATION_LEFT);
         let textFrame = this.buildElement( AppsterHTML.DIV, 
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_FRAME,
                                             [AppsterGUIClass.APPSTER_MODAL_FRAME]);
         let header = this.buildElement( AppsterHTML.HEADER, 
-                                        AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_HEADER,
+                                        GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_HEADER,
                                         [AppsterGUIClass.APPSTER_MODAL_HEADER]);
         let section = this.buildElement(    AppsterHTML.SECTION, 
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_SECTION,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_SECTION,
                                             [AppsterGUIClass.APPSTER_MODAL_SECTION]);
         let p = this.buildElement(AppsterHTML.P);
         let strong = this.buildElement(    AppsterHTML.STRONG, 
@@ -135,24 +141,19 @@ export default class GoLogoLoView extends AppsterView {
         let textFieldAttributes = [];
         textFieldAttributes[AppsterHTML.TYPE] = AppsterHTML.TEXT;
         let textField = this.buildElement(  AppsterHTML.INPUT,
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD,
                                             [AppsterGUIClass.APPSTER_MODAL_TEXTFIELD],
                                             textFieldAttributes);
         let enterButton = this.buildElement(   AppsterHTML.BUTTON, 
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_ENTER_BUTTON,
                                             [AppsterGUIClass.APPSTER_MODAL_BUTTON],
                                             [],
                                             AppsterText.APPSTER_TEXT_INPUT_MODAL_ENTER_BUTTON_TEXT);
         let cancelButton = this.buildElement(AppsterHTML.BUTTON, 
-                                            AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_CANCEL_BUTTON,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_CANCEL_BUTTON,
                                             [AppsterGUIClass.APPSTER_MODAL_BUTTON],
                                             [],
                                             AppsterText.APPSTER_TEXT_INPUT_MODAL_CANCEL_BUTTON_TEXT);
-        let footer = this.buildElement(     AppsterHTML.FOOTER, 
-                                            "", 
-                                            [AppsterGUIClass.APPSTER_MODAL_FOOTER],
-                                            [],
-                                            AppsterText.APPSTER_TEXT_INPUT_MODAL_FOOTER_TEXT);
         p.appendChild(strong);
         section.appendChild(p);
         textFrame.appendChild(header);
@@ -160,7 +161,6 @@ export default class GoLogoLoView extends AppsterView {
         section.appendChild(textField);
         section.appendChild(enterButton);
         section.appendChild(cancelButton);
-        textFrame.appendChild(footer);
         textModal.appendChild(textFrame);
         return textModal;
     }

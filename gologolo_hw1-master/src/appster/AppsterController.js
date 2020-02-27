@@ -92,34 +92,34 @@ export default class AppsterController {
     processEnterButton = () => {
         var theModel = this.model;
         var result = false;
-        console.log(this.model, "repeat starts here############");
-        var input = document.getElementById("appster_text_input_modal_textfield").value;
+        //console.log(this.model, "repeat starts here############");
+        var input = document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD).value;
         if(input.length <= 0){}
         else{
             var i;
-            console.log("!!!!!!!!!!!theModel.recentWork.length", theModel.recentWork.length)
+            //console.log("!!!!!!!!!!!theModel.recentWork.length", theModel.recentWork.length)
             for(i = 0; i < theModel.recentWork.length; i++){
                 if(input == theModel.recentWork[i].name)
                     result = true;
             }
-            console.log("!!!!!!!!!!!!!!!result", result)
+            //console.log("!!!!!!!!!!!!!!!result", result)
             if(result == true){
                 console.log("invalid");
-                document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
-                document.getElementById("appster_text_input_modal").style.opacity = 0;
-                document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'hidden';
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 0;
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME).style.opacity = 0;
     
-                document.getElementById("appster_confirm_modal").style.opacity = 1;
-                document.getElementById("appster_confirm_modal").style.visibility = 'visible';
-                document.getElementById("appster_confirm_modal_frame").style.opacity = 1;
+                document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL).style.opacity = 1;
+                document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL).style.visibility = 'visible';
+                document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL_FRAME).style.opacity = 1;
             }
             else{
                 var newLogo = new GoLogoLoLogo(input);
                 theModel.goList(newLogo);
                     
-                document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
-                document.getElementById("appster_text_input_modal").style.opacity = 0;
-                document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'hidden';
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 0;
+                document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME).style.opacity = 0;
             }
 
         }
@@ -127,18 +127,18 @@ export default class AppsterController {
     }
 
     processOkButton(){
-        document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
-        document.getElementById("appster_text_input_modal").style.opacity = 0;
-        document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
-        document.getElementById("appster_confirm_modal").style.opacity = 0;
-        document.getElementById("appster_confirm_modal").style.visibility = 'hidden';
-        document.getElementById("appster_confirm_modal_frame").style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'hidden';
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME).style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL).style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL).style.visibility = 'hidden';
+        document.getElementById(AppsterGUIId.APPSTER_CONFIRM_MODAL_FRAME).style.opacity = 0;
     }
 
     processCancelButton(){
-        document.getElementById("appster_text_input_modal").style.visibility = 'hidden';
-        document.getElementById("appster_text_input_modal").style.opacity = 0;
-        document.getElementById("appster_text_input_modal_frame").style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'hidden';
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 0;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME).style.opacity = 0;
     }
 
     /**
@@ -150,9 +150,9 @@ export default class AppsterController {
         console.log("processCreateNewWork");
 
         // PROMPT FOR THE NAME OF THE NEW LIST
-        document.getElementById("appster_text_input_modal").style.visibility = 'visible';
-        document.getElementById("appster_text_input_modal").style.opacity = 1;
-        document.getElementById("appster_text_input_modal_frame").style.opacity = 1;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'visible';
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 1;
+        document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_FRAME).style.opacity = 1;
 
 
         // MAKE A BRAND NEW LIST
