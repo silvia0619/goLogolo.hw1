@@ -94,7 +94,7 @@ export default class AppsterController {
         var result = false;
         //console.log(this.model, "repeat starts here############");
         var input = document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL_TEXTFIELD).value;
-        if(input.length <= 0){}
+        if(input.length <= 0 ){}
         else{
             var i;
             //console.log("!!!!!!!!!!!theModel.recentWork.length", theModel.recentWork.length)
@@ -103,7 +103,7 @@ export default class AppsterController {
                     result = true;
             }
             //console.log("!!!!!!!!!!!!!!!result", result)
-            if(result == true){
+            if(result == true || /\s/.test(input)){
                 console.log("invalid");
                 document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.visibility = 'hidden';
                 document.getElementById(AppsterGUIId.APPSTER_TEXT_INPUT_MODAL).style.opacity = 0;
